@@ -1,3 +1,5 @@
+# pip install --upgrade -r requirements.txt
+
 pyautogui
 pillow
 opencv-python
