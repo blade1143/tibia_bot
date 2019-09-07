@@ -4,8 +4,7 @@ from PIL import Image
 
 
 def key_bind(specif_key):
-    pyautogui.hotkey(specif_key)
-    time.sleep(1)
+    return pyautogui.hotkey(specif_key)
 
 '''
 position to !me window
@@ -18,17 +17,21 @@ position to !me window
 def move_mouse_cursor(x):
     pyautogui.moveTo(x)
     # pyautogui.doubleClick()
-    time.sleep(1)
     pyautogui.click()
-    time.sleep(1)
 
 
 def check_pos():
+    x = 0
     while True:
-        x = int(input(': '))
+        print(pyautogui.position())
         if x == 1:
-            print(pyautogui.position())
-
+            continue
+        time.sleep(1)
+        x = input(': ')
+'''
+unhash to check ur window + answers postion
+'''
+# check_pos()
 
 def area(pos):
     x1 = pos[0]
@@ -46,3 +49,6 @@ def area_save_file(pos, name):
     height = pos[3] - y2
 
     return pyautogui.screenshot(name, region=(x1, y2, width, height))
+
+# area_save_file([772, 478, 1143, 617], 'window_of_me.png')
+# pyautogui.screenshot('game_img.png')
