@@ -168,11 +168,11 @@ def main():
 
             eval_equation = eval(equation)
 
-            list_of_answers = correct_answer_chooser(answers_xy+200, mouse_xy)
+            list_of_answers = correct_answer_chooser(answers_xy, mouse_xy)
 
-            if list_of_answers == False:
-                key_bind('ESC')
-                return
+            # if list_of_answers == False:
+            #     key_bind('ESC')
+            #     return
 
             for answer in list_of_answers:
                 if answer[0] == eval_equation:
@@ -180,7 +180,7 @@ def main():
                     key_bind('ENTER')
                     return True
 
-            # key_bind('ESC')
+            key_bind('ESC')
 
         except:
             key_bind('ESC')
