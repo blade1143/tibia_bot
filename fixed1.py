@@ -35,7 +35,7 @@ def image_search_area(template, image_life, precision=0.6, im=None):
 def image_recognition(area_of_box):
     im = ImageOps.invert(area_of_box)
     im = ImageEnhance.Brightness(im)
-    im = im.enhance(1)
+    im = im.enhance(1.5)
     x, y = im.size
     a = im.resize((x*2, y*2), resample=1)
     # a.show()
