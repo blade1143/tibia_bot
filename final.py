@@ -5,8 +5,8 @@ def final_main():
     coo_tibia = [(470, 16), (1476, 16)]
     time.sleep(2)
     b = 2280
-    key_bind('F1')
-    key_bind('F2')
+    # key_bind('F1')
+    # key_bind('F2')
 
     while True:
         time.sleep(1)
