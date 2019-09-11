@@ -4,7 +4,9 @@ from fixed1 import *
 def final_main():
     coo_tibia = [(470, 16), (1476, 16)]
     time.sleep(2)
-    b = 1740
+    b = 2280
+    key_bind('F1')
+    key_bind('F2')
 
     while True:
         time.sleep(1)
@@ -14,9 +16,9 @@ def final_main():
         '''
         a = time.clock()
         if a > b:
+            key_bind('F1')
             key_bind('F2')
-            key_bind('F4')
-            b += 1740
+            b += 2280
 
 
 if __name__ == "__main__":

@@ -101,12 +101,52 @@ def correct_answer_chooser(answers_coordinates, mouse_coordinates):
     set_of_answers = set(list_of_anwers2)
 
     if len(list_of_answers) != len(set_of_answers):
-        return False
+        raise ValueError
 
     if len(list_of_answers) != 5:
-        return False
+        raise ValueError
 
     return list_of_answers
+
+
+# def main():
+#     # while True:
+#     #     time.sleep(2)
+#     key_bind('F11')
+#     x_axis, y_axis = template_recognition('window_of_me.png')
+#     # print('templatka', x_axis, y_axis)
+#     if [x_axis, y_axis] != [-1, -1]:
+#         try:
+#             x1, y1, x2, y2 = co_ordinates_equation(x_axis, y_axis)
+#             # print('rownanie', x1, y1, x2, y2)
+#             mouse_xy = co_ordinates_mouse(x_axis, y_axis)
+#             # print('mysz', mouse_xy)
+#             # move_mouse_cursor((x_axis, y_axis))
+#             answers_xy = co_ordinates_answers(x_axis, y_axis)
+#             # print('odpowiedzi', answers_xy)
+#             equation = image_recognition(area([x1, y1, x2, y2]))
+#             # print('str rownanie',equation)
+#             eval_equation = eval(equation)
+#             # print('int rownanie', eval_equation)
+#             back = False
+#         except:
+#             back = True
+#             key_bind('ESC')
+#             # continue
+#         if back == True:
+#             key_bind('ESC')
+#         else:
+#             list_of_answers = correct_answer_chooser(answers_xy, mouse_xy)
+#
+#             if list_of_answers == False:
+#                 key_bind('ESC')
+#             else:
+#                 for answer in list_of_answers:
+#                     if answer[0] == eval_equation:
+#                         move_mouse_cursor((answer[2]))
+#                         key_bind('ENTER')
+#                         break
+#                 key_bind('ESC')
 
 
 def main():
@@ -114,31 +154,25 @@ def main():
     #     time.sleep(2)
     key_bind('F11')
     x_axis, y_axis = template_recognition('window_of_me.png')
-
+    # print('templatka', x_axis, y_axis)
     if [x_axis, y_axis] != [-1, -1]:
         try:
             x1, y1, x2, y2 = co_ordinates_equation(x_axis, y_axis)
             mouse_xy = co_ordinates_mouse(x_axis, y_axis)
-            move_mouse_cursor((x_axis, y_axis))
+
             answers_xy = co_ordinates_answers(x_axis, y_axis)
+
             equation = image_recognition(area([x1, y1, x2, y2]))
+
             eval_equation = eval(equation)
-            back = False
-        except:
-            back = True
-            key_bind('ESC')
-            # continue
-        if back == True:
-            key_bind('ESC')
-        else:
+
             list_of_answers = correct_answer_chooser(answers_xy, mouse_xy)
 
-            if list_of_answers == False:
-                key_bind('ESC')
-            else:
-                for answer in list_of_answers:
-                    if answer[0] == eval_equation:
-                        move_mouse_cursor((answer[2]))
-                        key_bind('ENTER')
-                        break
-                key_bind('ESC')
+            for answer in list_of_answers:
+                if answer[0] == eval_equation:
+                    move_mouse_cursor((answer[2]))
+                    key_bind('ENTER')
+                    return True
+
+        except:
+            key_bind('ESC')
