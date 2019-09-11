@@ -101,10 +101,12 @@ def correct_answer_chooser(answers_coordinates, mouse_coordinates):
     set_of_answers = set(list_of_anwers2)
 
     if len(list_of_answers) != len(set_of_answers):
-        raise ValueError
+        # raise ValueError
+        return False
 
     if len(list_of_answers) != 5:
-        raise ValueError
+        # raise ValueError
+        return False
 
     return list_of_answers
 
@@ -166,13 +168,19 @@ def main():
 
             eval_equation = eval(equation)
 
-            list_of_answers = correct_answer_chooser(answers_xy, mouse_xy)
+            list_of_answers = correct_answer_chooser(answers_xy+200, mouse_xy)
+
+            if list_of_answers == False:
+                key_bind('ESC')
+                return
 
             for answer in list_of_answers:
                 if answer[0] == eval_equation:
                     move_mouse_cursor((answer[2]))
                     key_bind('ENTER')
                     return True
+
+            # key_bind('ESC')
 
         except:
             key_bind('ESC')
