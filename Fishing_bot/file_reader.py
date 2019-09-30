@@ -14,10 +14,11 @@ list_of_fish = rader('ryby.txt')
 
 time.sleep(2)
 for fish in list_of_fish:
-    # time.sleep(1)
+    time.sleep(0.3)
     pyautogui.typewrite(fish)
     pyautogui.hotkey('ENTER')
     pyautogui.typewrite('yes')
     pyautogui.hotkey('ENTER')
     pyautogui.typewrite('yes')
     pyautogui.hotkey('ENTER')
+

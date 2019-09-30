@@ -4,7 +4,7 @@ from PIL import Image
 
 
 def key_bind(specif_key):
-    time.sleep(1)
+    # time.sleep(0.3)
     pyautogui.hotkey(specif_key)
 
 '''
@@ -16,7 +16,7 @@ position to !me window
 '''
 
 def move_mouse_cursor(x):
-    time.sleep(1)
+    # time.sleep(0.3)
     pyautogui.moveTo(x)
     # pyautogui.doubleClick()
     pyautogui.click()
@@ -27,7 +27,7 @@ def check_pos():
         x = int(input(': '))
         if x == 1:
             print(pyautogui.position())
-            time.sleep(1)
+            time.sleep(0.1)
 '''
 unhash to check ur window + answers postion
 '''

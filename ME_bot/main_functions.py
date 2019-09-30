@@ -2,9 +2,9 @@ import cv2
 import time
 import numpy as np
 import pyautogui
-from PIL import ImageEnhance, Image, ImageOps
+from PIL import ImageEnhance, ImageOps
 import pytesseract
-from v1 import area, check_pos, move_mouse_cursor, key_bind
+from basic_functions import area, move_mouse_cursor, key_bind
 
 
 pytesseract.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
@@ -101,64 +101,21 @@ def correct_answer_chooser(answers_coordinates, mouse_coordinates):
     set_of_answers = set(list_of_anwers2)
 
     if len(list_of_answers) != len(set_of_answers):
-        # raise ValueError
         return False
 
     if len(list_of_answers) != 5:
-        # raise ValueError
         return False
 
     return list_of_answers
 
 
-# def main():
-#     # while True:
-#     #     time.sleep(2)
-#     key_bind('F11')
-#     x_axis, y_axis = template_recognition('window_of_me.png')
-#     # print('templatka', x_axis, y_axis)
-#     if [x_axis, y_axis] != [-1, -1]:
-#         try:
-#             x1, y1, x2, y2 = co_ordinates_equation(x_axis, y_axis)
-#             # print('rownanie', x1, y1, x2, y2)
-#             mouse_xy = co_ordinates_mouse(x_axis, y_axis)
-#             # print('mysz', mouse_xy)
-#             # move_mouse_cursor((x_axis, y_axis))
-#             answers_xy = co_ordinates_answers(x_axis, y_axis)
-#             # print('odpowiedzi', answers_xy)
-#             equation = image_recognition(area([x1, y1, x2, y2]))
-#             # print('str rownanie',equation)
-#             eval_equation = eval(equation)
-#             # print('int rownanie', eval_equation)
-#             back = False
-#         except:
-#             back = True
-#             key_bind('ESC')
-#             # continue
-#         if back == True:
-#             key_bind('ESC')
-#         else:
-#             list_of_answers = correct_answer_chooser(answers_xy, mouse_xy)
-#
-#             if list_of_answers == False:
-#                 key_bind('ESC')
-#             else:
-#                 for answer in list_of_answers:
-#                     if answer[0] == eval_equation:
-#                         move_mouse_cursor((answer[2]))
-#                         key_bind('ENTER')
-#                         break
-#                 key_bind('ESC')
-
-
 def main():
-    # while True:
-    #     time.sleep(2)
-    key_bind('F11')
+
     x_axis, y_axis = template_recognition('window_of_me.png')
     # print('templatka', x_axis, y_axis)
     if [x_axis, y_axis] != [-1, -1]:
         try:
+            start_time = time.time()
             x1, y1, x2, y2 = co_ordinates_equation(x_axis, y_axis)
             mouse_xy = co_ordinates_mouse(x_axis, y_axis)
 
@@ -178,6 +135,7 @@ def main():
                 if answer[0] == eval_equation:
                     move_mouse_cursor((answer[2]))
                     key_bind('ENTER')
+                    print("--- %s seconds ---" % (time.time() - start_time))
                     return True
 
             key_bind('ESC')
